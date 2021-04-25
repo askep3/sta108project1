@@ -1,0 +1,72 @@
+---
+title: "Project 1"
+author: "Konark Mangudkar, "
+output: pdf_document
+---
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(
+	error = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	echo = FALSE, # hide all R codes!!
+	fig.width=5, fig.height=4,#set figure size
+	fig.align='center',#center plot
+	options(knitr.kable.NA = ''), #do not print NA in knitr table
+	tidy = FALSE #add line breaks in R codes
+)
+```
+
+#Introduction
+......
+Half page introduction includes background about the problem, description of the data, main objectives of your study, main tool(s) you use, an outline of the rest of the report.
+......
+
+#Part I: Fitting regression models
+
+##Projects 1.43 
+(a) Regress the number of active physicians in turn on each of the three predictor variables. State the estimated regression functions.
+
+(I will use the data of Problem 1.21 in textbook as an example):
+
+```{r, results="hide"}
+#use results="hide" to hide the unimportant output.
+X = c(1,0,2,0,3,1,0,1,2,0)
+Y = c(16, 9, 17, 12, 22, 13, 8, 15, 19, 11)
+n = length(X)
+fit=lm(Y~X)
+coef=fit$coefficients
+b0hat = coef[1]
+b1hat = coef[2]
+b0hat
+b1hat
+```
+
+Let $Y$ be breakage, $X_1$ be the number of transfers. The estimated regression function is $\hat{Y}= `r b0hat`+ `r b1hat` X_1$.
+
+*#Define $X$ and $Y$ clearly, and only answer the questions, do not need to show the formulas for the calculations.*
+
+......
+
+
+(b) Plot the three estimated regression functions and data on separate graphs. Does a linear regression relation appear to provide a good fit for each of the three predictor variables?
+
+```{r}
+#Fitted line
+plot(X,Y,ylim=c(5,30),xlab = "Number of transfer",ylab = "Number of broken ampules")
+abline(fit, col="red")
+```
+
+....Label the axes clearly, Comments on the plot...
+
+#Part II: Measuring linear associations
+
+#Part III: Inference about regression parameters
+
+#Part IV: Regression diagnostics
+
+#Part V: Discussion
+
+#Appendix
+```{r, ref.label=knitr::all_labels(),echo=TRUE,eval=FALSE}
+```
