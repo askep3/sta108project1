@@ -1,3 +1,4 @@
+id county state landarea totalpop percentpop18-34 perceptpop65plus numphys numbeds totalcrimes percentgrad percentdegree percentbelowpow percentunemp percapincome totalpersonalincome georegion
     1  Los_Angeles            CA     4060    8863164   32.1    9.7    23677    27700    688936   70.0   22.3   11.6    8.0    20786    184230    4
     2  Cook                   IL      946    5105067   29.2   12.4    15153    21550    436936   73.4   22.8   11.1    7.2    21729    110928    2
     3  Harris                 TX     1729    2818199   31.3    7.1     7553    12449    253526   74.9   25.4   12.5    5.7    19517     55003    3

@@ -1,7 +1,9 @@
 ---
 title: "Project 1"
-author: "Konark Mangudkar, "
-output: pdf_document
+author: 'Konark Mangudkar, '
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r, include=FALSE, echo=FALSE}
@@ -27,19 +29,37 @@ Half page introduction includes background about the problem, description of the
 ##Projects 1.43 
 (a) Regress the number of active physicians in turn on each of the three predictor variables. State the estimated regression functions.
 
-(I will use the data of Problem 1.21 in textbook as an example):
 
 ```{r, results="hide"}
 #use results="hide" to hide the unimportant output.
-X = c(1,0,2,0,3,1,0,1,2,0)
-Y = c(16, 9, 17, 12, 22, 13, 8, 15, 19, 11)
-n = length(X)
-fit=lm(Y~X)
-coef=fit$coefficients
-b0hat = coef[1]
-b1hat = coef[2]
-b0hat
-b1hat
+pop <- read.csv("CDI.txt", sep="")
+n = length(pop$id)
+Y = pop$numphys
+
+# 1.43.a
+X1 = pop$totalpop ; X2 = pop$numbeds ; X3 = pop$totalpersonalincome
+totalpopregress = lm(Y ~ X1) ; numbedsregress = lm(Y ~ X2) ; personincomeregress = lm(Y ~ X3)
+totalpopregress$coefficients[1]
+totalpopregress$coefficients[2]
+# Y1 = -110.6348 + 0.002795425*X
+
+
+
+
+
+
+# 1.43.b
+plot(X1, Y)
+abline(totalpopregress)
+
+
+# 1.43.c
+totalpopanova = anova(totalpopregress)
+numbedsanova = anova(numbedsregress)
+personincomeanova = anova(personincomeregress)
+totalpopanova$`Mean Sq`[2]
+numbedsanova$`Mean Sq`[2]
+personincomeanova$`Mean Sq`[2]
 ```
 
 Let $Y$ be breakage, $X_1$ be the number of transfers. The estimated regression function is $\hat{Y}= `r b0hat`+ `r b1hat` X_1$.
